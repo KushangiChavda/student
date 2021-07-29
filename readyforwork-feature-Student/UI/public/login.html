@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+</head>
+
+<body>
+    <a href="/register">Create new account?</a>
+    </br>
+    </br>
+    </br>
+    <form onsubmit="return onSubmit(event)">
+        <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" value="test@gmail.com">
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password" value="test">
+        </div>
+        <div>
+            <button type="submit">Login</button>
+            <button type="reset">Reset</button>
+        </div>
+    </form>
+</body>
+
+<script>
+    function onSubmit(e) {
+        e.preventDefault();
+        let user = {
+            email: e.target[0].value,
+            password: e.target[1].value,
+
+        }
+        fetch("http://localhost:2000/auth/v1/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        }).then((res) => res.json())
+            .then((data) => {
+                alert('check console');
+                console.log(data)
+            })
+            .catch((err) => {
+                alert('check console');
+                console.log(err)
+            })
+    }
+</script>
+
+</html>

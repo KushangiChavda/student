@@ -1,0 +1,14 @@
+# TODO: We need to test all service when core updated.
+name: test-core
+
+on: 
+  pull_request:
+    paths:
+      - 'core/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm run core-install && cd auth-service && npm install && npm run test:ci

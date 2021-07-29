@@ -1,0 +1,40 @@
+{
+  "name": "ready-for-work-microservices",
+  "version": "1.0.0",
+  "description": "API for 'Ready For Work' project.",
+  "main": "index.js",
+  "scripts": {
+    "app-install": "concurrently \"npm run core-install\" \"npm run auth-install\" \"npm run UI-install\" \"npm run admin-UI-install\"",
+    "core-install": "cd core && npm install",
+    "auth-install": "cd auth-service && npm install",
+    "UI-install": "cd UI && npm install",
+    "admin-UI-install": "cd admin-UI && npm install",
+    "seed:auth": "cd auth-service && npm run seed",
+    "start": "concurrently \"npm run auth\" \"npm run UI\" \"npm run admin-UI\"",
+    "auth": "cd auth-service && npm start",
+    "UI": "cd UI && npm start",
+    "admin-UI": "cd admin-UI && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stacksum/ready-for-work.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stacksum/ready-for-work/issues"
+  },
+  "homepage": "https://github.com/stacksum/ready-for-work#readme",
+  "dependencies": {
+    "@date-io/date-fns": "^1.3.13",
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/lab": "^4.0.0-alpha.58",
+    "@material-ui/pickers": "^3.3.10",
+    "concurrently": "^6.1.0",
+    "date-fns": "^2.22.1",
+    "prop-types": "^15.7.2",
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.0"
+  }
+}
